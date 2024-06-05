@@ -4,7 +4,7 @@
 #include<stdlib.h>
 int main() {
 	int a, b;
-	int *v1, *v2;
+	int *v1, *v2, *u;
 	int i, j, check = 0;
 	
 	
@@ -29,14 +29,22 @@ int main() {
 	//printing the union of the elements
 	for(i = 0; i < a; i++) {
 		printf("%d ", *(v1 + i));
-		for(j = 0; j < b; j++) {
+	}
+
+	for(j = 0; j < b; j++) {
+		check = 0;
+		for(i = 0; i < a; i++) {
 			if(*(v1 + i) == *(v2 + j)) 
 			{
-				printf("%d ", *(v2 + j));
-				break;
-			}	
+				check = 1;
+			}
+		}
+		if(check == 0)
+		{
+			printf("%d ", *(v2 + j));
 		}
 	}
+	
 	
 	printf("\n");
 	
