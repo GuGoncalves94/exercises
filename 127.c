@@ -4,7 +4,7 @@ seja a transposta de X. Mostre as duas matrizes na tela. */
 #include<stdio.h>
 #include<stdlib.h>
 int main() {
-	int *p, *m, lin, col, lin1, col1, i, j;
+	int *p, *m, lin, col, i, check, qtd;
 	
 	//ask the amount of lines and colunms
 	scanf("%d", &lin);
@@ -18,24 +18,22 @@ int main() {
 	
 	m = malloc(lin * col * sizeof(int));
 	
-	lin1 = col;
-	col1 = lin;
-	j = 0;
-	
+	check = 0;
+	qtd = 1;
 	for(i = 0; i < lin * col; i++) {
-		if(i % col == 0 && j < lin) { //takes the first line 
-			(m + j) = (p + i);
-			j++;
+		if(i % col == 0) {
+			*(m + i) = *(p + check);
+			check += col;
 		}
 		else {
-			(m + lin + i) = (p + i);
-		}
-	
+			*(m + qtd) = *(p + i);
+			qtd += col;
+		}	
 	}
 	
 	//printing the matrix transpose
-	for(j = 0; j < lin * col; j++) {
-		printf("%d", *(p + i));
+	for(i = 0; i < lin * col; i++) {
+		printf("%d", *(m + i));
 	}
 	
 
