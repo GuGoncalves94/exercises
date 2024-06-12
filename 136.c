@@ -17,23 +17,19 @@ int main() {
 }
 
 int qtdprimos(int n) {
-	int qtd, i, j, check;
+	int qtd = 0, i, j, check;
 	
-	if(n != 1) {
-		for(i = 2; i <= n; i++) {
-			check = 0;
-			for(j = 2; j <= n; j++) {
-				if(i % j == 0) {
-					check++;
-				}
+	for(i = 2; i <= n; i++) {
+		check = 0;
+		for(j = 2; j <= i; j++) {
+			if(i % j == 0) {
+				check++;
 			}
-			if(check == 1) {
-				qtd++;
-			}
-		}	
-	}
-	else {
-		qtd = 1;
-	}
+		}
+		if(check == 1) {
+			qtd++;
+		}
+	}	
+
 	return qtd;
 }
