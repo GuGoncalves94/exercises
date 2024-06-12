@@ -27,14 +27,12 @@ int main() {
 }
 
 double avgvet(int *vet, int n) {
-	int i, soma;
+	int i;
 	double answer;
 	
 	for(i = 0; i < n; i++) {
-		soma = soma + *(vet + i);
+		answer = answer + (double) *(vet + i) / n;
 	}
 
-	answer = soma / n;
-	
 	return answer;
 }
