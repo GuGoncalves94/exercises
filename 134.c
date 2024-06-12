@@ -17,21 +17,6 @@ int main() {
 
 	return 0;
 }
-double serie(int n) {
-	int i, x = 2;
-	float serie = 0;
-	
-	for(i = 0; i < n; i++) {
-		serie = serie + ( (int)i / (long long int)fatorial(x) );
-		printf("serie %f\n", serie);
-		printf("i %d\n", i);
-		printf("fatorial %lld\n", fatorial(x));
-		x += 2;
-	}
-	
-	return serie;
-}
-
 long long int fatorial(int x) {
 	long long int fat = 1;
 	int i;
@@ -41,4 +26,15 @@ long long int fatorial(int x) {
 	}
 			
 	return fat;
+}
+
+double serie(int n) {
+	int i;
+	double serie = 0;
+	
+	for(i = 0; i < n; i++) {
+		serie = serie + (double) i / (long long int)fatorial(i * 2);
+	}
+	
+	return serie;
 }
