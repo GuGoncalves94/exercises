@@ -6,37 +6,22 @@ encontram. */
 #include<stdlib.h>
 
 int main() {
-	int i, *p, lin, col, men, mai, idl, idc, idl1, idc1;
+	int i, **p, lin, col;
 	
-	//ask the value of lines and colunms to the user
-	scanf("%d", &lin);
-	scanf("%d", &col);
+	scanf("%d %d", &lin, &col);
 	
-	p = malloc(lin * col * sizeof(int));
 	
-	for(i = 0; i < lin * col; i++) {
-		scanf("%d", (p + i));
+	p = (int **)malloc(col * sizeof(int * ));
+	p[0] = (int *)malloc (lin * col * sizeof(int));
+	
+	printf("antes");
+	for(i = 1; i < col; i++) {
+		p[i] = p[i - 1] + col;
+		printf("dentro");
 	}
+		
 	
-	//searching for the biggest and lowest value
-	mai = men = *(p + 0);
-	for(i = 0; i < lin * col; i++) {
-		if(*(p + i) > mai) {
-			mai = *(p + i);
-			idl = i / col;
-			idc = i % col;
-		}
-		if(*(p + i) < men) {
-			men = *(p + i);
-			idl1 = i / col;
-			idc1 = i % col;
-		}
-	}
 	
-	printf("Biggest number is (%d), located in (%d)(%d)\n", mai, idl, idc);
-	printf("Lowest number is (%d), located in (%d)(%d)\n", men, idl1, idc1);	
-	
-	free(p);
 		
 	return 0;
-}
+}	

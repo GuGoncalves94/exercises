@@ -4,26 +4,27 @@ dinâmica. A seguir, leia um valor do usuário e verifique se o valor digitado e
 #include<stdio.h>
 #include<stdlib.h>
 int main() {
-	int i, *p, lin, col, inte;
+	int i, **p, lin, col, inte;
 	
 	//ask the values of lines and colunms to the user
 	scanf("%d", &lin);
 	scanf("%d", &col);
 	
-	p = malloc(lin * col * sizeof(int));
+	**p = (int *)malloc(lin * sizeof(int *));
+	p[0] = malloc(lin * col * sizeof(int));
 	
-	for(i = 0; i < lin * col; i++) {
-		scanf("%d", (p + i));
+	for(i = 1; i < lin * col; i++) {
+		scanf("%d", p[i]);
 	}
 	
 	//ask an integer to the user
 	scanf("%d", &inte);
 	
-	for(i = 0; i < lin * col; i++) {
+	/* for(i = 0; i < lin * col; i++) {
 		if(*(p + i) == inte) {
 			printf("The integer (%d) appears on the matrix (%d) (%d)\n", inte, lin, col);
 		}
-	}
+	}  */
 	
 	free(p);
 	
