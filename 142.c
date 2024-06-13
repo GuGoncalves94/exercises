@@ -1,10 +1,9 @@
 /* Faça uma função que receba um valor N e dois vetores de tamanho N. A função deve alocar um terceiro vetor, formado pela soma dos dois vetores recebidos e devolvê-lo ao main. Por fim, o main imprime o vetor soma, sendo um elemento separado do outro por um único espaço. Use apenas aritmética de ponteiros, isto é, faça este programa sem usar colchetes. O main deve ler o valor N, alocar e ler os dois vetores. No Moodle, insira seu programa completo (main + funções). */
 
 #include<stdio.h>
-#include<string.h>
 #include<stdlib.h>
 
-int aloca(int n, int *a, int *b);
+void aloca(int n, int *a, int *b, int *answer);
 
 int main() {
 	int n, i;
@@ -29,9 +28,9 @@ int main() {
 		scanf("%d", (b + i));
 	}
 
-	answer = aloca(n, *a, *b);
+	aloca(n, a, b, answer);
 		
-	for(i = 0; i < strlen(answer); i++) {		
+	for(i = 0; i < n + n; i++) {		
 		printf("%d ", *(answer + i));
 	}
 	
@@ -42,14 +41,16 @@ int main() {
 	return 0;
 }
 
-int aloca(int n, int *a, int *b) {
-	int *answer;
+void aloca(int n, int *a, int *b, int *answer) {
 	int i;
 	
-	answer = (int *)malloc((n + n + 1) * sizeof(int));
+	answer = (int *)malloc((n + n) * sizeof(int));
 	
-	strcpy(answer, a);
-	strcpy(answer, b);
-
-	return answer;
+	for(i = 0; i < n; i++) {
+		*(answer + i) = *(a + i);
+	}
+	
+	for(i = n; i < n + n; i++) {
+		*(answer + i) = *(b + i); 
+	}
 }	
