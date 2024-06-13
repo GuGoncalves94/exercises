@@ -7,15 +7,30 @@ int somafat(int n) */
 int somafat(int n);
 
 int main() {
-  int n;
+	int n, answer;
 
-  scanf("%d", &n);
-
-  return 0;
+	scanf("%d", &n);
+ 
+ 	answer = somafat(n);
+ 
+	printf("%d", answer);
+	
+	return 0;
 }
 
 int somafat(int n) {
-
-
-  return soma;
+	int soma = 0, i;
+	long long int fat = 1;
+	
+	for(i = 1; i <= n; i++) {
+		fat = fat * i; 
+	}
+	
+	while(fat > 0) {
+		soma += fat % 10;
+		fat -= fat % 10;
+		fat = fat / 10;
+	}
+	
+	return soma;
 }
