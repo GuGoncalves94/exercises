@@ -11,23 +11,36 @@ programa completo (main + funções). */
 #include<stdio.h>
 #include<stdbool.h> //true = 1 false = 0
 
-bool contido(int x, int y);
+bool contido(int ax, int ay, int v1x, int v1y, int v2x, int v2y);
 
 typedef struct ponto {
 	int x, y;
 } ponto;
 
-int main() {
-
-
-
+int main() {	
+	ponto a;
+	ponto v1;
+	ponto v2;
+	bool answer;
+	
+	scanf("%d %d", &a.x, &a.y);
+	scanf("%d %d", &v1.x, &v1.y);
+	scanf("%d %d", &v2.x, &v2.y);
+	
+	answer = contido(a.x, a.y, v1.x, v1.y, v2.x, v2.y);
+	
+	printf("%d\n", answer);
 
 	return 0;
 }
 
-bool contido(int x, int y) {
-	
-
-
-
+bool contido(int ax, int ay, int v1x, int v1y, int v2x, int v2y) {
+	if(v1x < ax && v2x > ax) {
+		if(v1y < ay && v2y > ay) {
+			return true;
+		}
+	}
+	else {
+		return false;
+	}
 }
