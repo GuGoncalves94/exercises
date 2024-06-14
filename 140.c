@@ -30,17 +30,15 @@ int main() {
 }
 
 int afimb(char *a, char *b) {
-	int i, j, check;
-	
-	for(i = 0; i < strlen(a); i++) {
-		for(j = 0; j < strlen(b); j++) {
-			if(*(a + i) == *(b + j)) {
-				check++;
-				break;
-			}
+	int i, j, check = 0;
+		while(i < strlen(a)) {
+			for(j = strlen(b) - strlen(a); j < strlen(b); j++) {
+				if(*(a + i ) != *(b + j)) {
+					return 0;
+					check = 1;
+					break;
+				}
+				else i++;
+			}	
 		}
-	}
-	
-	if(check == strlen(a)) return 1;	
-	else return 0;
 }
