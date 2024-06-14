@@ -27,7 +27,7 @@ int main() {
 	scanf("%d %d", &v1.x, &v1.y);
 	scanf("%d %d", &v2.x, &v2.y);
 	
-	answer = contido(v1, v2, p);
+	answer = contido(v1, v2, a);
 	
 	printf("%d\n", answer);
 
