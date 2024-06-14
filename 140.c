@@ -12,6 +12,9 @@ int main() {
 	
 	a = (char *)malloc(50 * sizeof(char));
 	b = (char *)malloc(50 * sizeof(char));
+
+	if(a == NULL) exit(1);
+	if(b == NULL) exit(1);
 	
 	for(i = 0; i < 50; i++) {
 		scanf(" %c", (a + i));
@@ -25,6 +28,9 @@ int main() {
 	
 	answer = afimb(a, b);
 	printf("%d\n", answer);
+
+	free(a);
+	free(b);
 	
 	return 0;
 }
@@ -41,4 +47,5 @@ int afimb(char *a, char *b) {
 				else i++;
 			}	
 		}
+		if(check == 0) return 1;
 }
