@@ -17,10 +17,10 @@ int main() {
 		scanf("%d", (a + i));
 	}
 	
-	ma = *(a + i);
-	mi = *(a + i);
+	ma = *(a + 0);
+	mi = *(a + 0);
 	
-	mami(*a, n, ma, mi);
+	mami(a, n, ma, mi);
 	
 	return 0;
 }
