@@ -3,7 +3,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-void aloca(int n, int *a, int *b, int *answer);
+int *aloca(int n, int *a, int *b);
 
 int main() {
 	int n, i;
@@ -28,9 +28,9 @@ int main() {
 		scanf("%d", (b + i));
 	}
 
-	aloca(n, a, b, answer);
+	answer = aloca(n, a, b);
 		
-	for(i = 0; i < n + n; i++) {		
+	for(i = 0; i < n; i++) {		
 		printf("%d ", *(answer + i));
 	}
 	
@@ -41,16 +41,17 @@ int main() {
 	return 0;
 }
 
-void aloca(int n, int *a, int *b, int *answer) {
+int *aloca(int n, int *a, int *b) {
 	int i;
+	int *c;
 	
-	answer = (int *)malloc((n + n) * sizeof(int));
+	c = (int *)malloc(n * sizeof(int));
+	
+	if(c == NULL) exit(1);
 	
 	for(i = 0; i < n; i++) {
-		*(answer + i) = *(a + i);
+		*(c + i) = *(a + i)  + *(b + i);
 	}
 	
-	for(i = n; i < n + n; i++) {
-		*(answer + i) = *(b + i); 
-	}
+	return c;
 }	
