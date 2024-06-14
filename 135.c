@@ -1,3 +1,5 @@
+/* Faça uma função que receba um número inteiro e retorne a soma de seus algarismos. No Moodle, insira
+seu programa completo (main + funções). */
 #include<stdio.h>
 
 int soma(int num);
