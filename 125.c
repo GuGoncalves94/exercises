@@ -17,8 +17,8 @@ int main() {
 	
 	if(!mat || !mat[0]) exit(1);
 	
-	for(i = 0; i < lin; i++) {
-		mat[i] = mat[i] + col;
+	for(i = 1; i < lin; i++) {
+		mat[i] = mat[i - 1] + col;
 	}
 	
 	for(i = 0; i < lin; i++) {
@@ -26,7 +26,27 @@ int main() {
 			scanf("%d", &mat[i][j]);
 		}
 	}
-
+	
+	ma = mat[0][0];
+	me = mat[0][0];
+	
+	for(i = 0; i < lin; i++) {
+		for(j = 0; j < col; j++) {
+			if(ma < mat[i][j]) {
+				ma = mat[i][j];
+				malin = i;
+				macol = j;
+			}
+			if(me > mat[i][j]) {
+				me = mat[i][j];
+				melin = i;
+				mecol = j;
+			}
+		}
+	}
+	
+	printf("Biggest value and position in the matrix are: %d [%d][%d]\n", ma, malin, macol);
+	printf("Biggest value and position in the matrix are: %d [%d][%d]", me, melin, mecol);
 
 
 	free(mat);
