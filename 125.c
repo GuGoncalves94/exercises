@@ -1,32 +1,35 @@
 /* Crie um programa que leia o número de linhas, colunas e os valores de uma matriz, fazendo alocação
-dinâmica. A seguir, leia um valor do usuário e verifique se o valor digitado está contido na matriz. */
-
+dinâmica. A seguir, mostre o menor e maior valor digitados, bem como a linha e coluna em que se
+encontram. */
 #include<stdio.h>
 #include<stdlib.h>
+
 int main() {
-	int i, **p, lin, col, inte;
+	int **mat;
+	int i, j, lin, col, ma, me;
+	int malin, macol, melin, mecol; 
 	
-	//ask the values of lines and colunms to the user
-	scanf("%d", &lin);
-	scanf("%d", &col);
+	printf("Enter the amount of lines and colunms:\n");
+	scanf("%d %d", &lin, &col);
 	
-	**p = (int *)malloc(lin * sizeof(int *));
-	p[0] = malloc(lin * col * sizeof(int));
+	mat = (int **)malloc(lin * sizeof(int));
+	mat[0] = (int *)malloc(lin * col * sizeof(int));
 	
-	for(i = 1; i < lin * col; i++) {
-		scanf("%d", p[i]);
+	if(!mat || !mat[0]) exit(1);
+	
+	for(i = 0; i < lin; i++) {
+		mat[i] = mat[i] + col;
 	}
 	
-	//ask an integer to the user
-	scanf("%d", &inte);
-	
-	/* for(i = 0; i < lin * col; i++) {
-		if(*(p + i) == inte) {
-			printf("The integer (%d) appears on the matrix (%d) (%d)\n", inte, lin, col);
+	for(i = 0; i < lin; i++) {
+		for(j = 0; j < col; j++) {
+			scanf("%d", &mat[i][j]);
 		}
-	}  */
-	
-	free(p);
-	
+	}
+
+
+
+	free(mat);
+
 	return 0;
 }
